@@ -81,7 +81,7 @@ do
         ARCHEND=${ARCH}${END}
         echo ${ARCHEND}
 
-        psql -d firmware -U firmadyne -h 127.0.0.1 -q -c "UPDATE image SET arch = '$ARCHEND' WHERE id = $IID;"
+        psql "dbname=firmware user=firmadyne password=${SQL_PASSWD}"-h 127.0.0.1 -q -c "UPDATE image SET arch = '$ARCHEND' WHERE id = $IID;"
 
         rm -fr "/tmp/${IID}"
         exit 0
